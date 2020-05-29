@@ -21,12 +21,10 @@ def api_reader(request):
             content = json.loads(res.content.decode())['ParsedResults'][0]['TextOverlay']
             lines = [line['LineText'] for line in content['Lines']]
             text = '/n'.join(lines)
-            tashkeel_host = 'http://tahadz.com/mishkal/ajaxGet?text='+text+'&action=TashkeelText'
-            res2 = requests.get(tashkeel_host)
-            meskal = json.loads(res2.content.decode())['result']
+           
 
             data_speech = {
-                'msg' : meskal,
+                'msg' : text,
                 'lang': 'Zeina',
                 'source': 'ttsmp3'
             }
